@@ -26,7 +26,7 @@ public:
 	void Insert(int index, int data);
 	void Delete(int index);
 	void Reverse();
-	void Print();
+	void Display();
 private:
 	Node*head;
 };
@@ -75,8 +75,8 @@ void List::Insert(int index, int data)
 	{
 		return;
 	}
-	Node *newNote = new Node(data,temp->next);
-	temp->next = newNote;
+	Node *newNode = new Node(data,temp->next);
+	temp->next = newNode;
 }
 
 void List::Delete(int index)
@@ -93,41 +93,24 @@ void List::Delete(int index)
 
 void List::Reverse()
 {
-	/*
-	Node *front = NULL;
-	Node *p= head->next;
-	while(p->next != NULL)
-	{
-		Node *rear = p->next;
-		
-		p->next  = front;
-		front = p;
-		p  = rear;
-	}
-	p->next = front; // 这一句很重要
-	head->next = p;
-	*/
 
-	/*
-	if (head == NULL)
-	return ;
-	if (head->next == NULL)
-	return ;
-	Node* pre = NULL;
-	Node* Cur = head;
-	Node* Nex = NULL;
-	while (Cur!=NULL)
+	Node *pre = head->next;
+	Node *cur = pre->next;
+	Node *next = NULL;
+
+	while (cur != NULL)
 	{
-	Nex = Cur->next;
-	Cur->next = pre;
-	pre = Cur;
-	Cur = Nex;
+		next = cur->next;
+		cur->next = pre;
+		pre = cur;
+		cur = next;
 	}
-	head  = pre;
-	*/
+
+	head->next ->next= NULL;//将原来的第一个节点的指针域赋为空，作为尾节点
+    head->next = pre; //将原来的尾节点变成新链表的第一个节点（头结点所指向的节点）
 }
 
-void List::Print()
+void List::Display()
 {
 	Node * temp = head->next;
 	while (temp != NULL)
@@ -145,10 +128,15 @@ void main()
 	{
 		list.Append(i);
 	}
-	list.Print();
+	list.Display();
+	cout<<"Insert(1,10):";
 	list.Insert(1,10);
-	list.Print();
+	list.Display();
+	cout<<"Delete(1):";
 	list.Delete(1);
-	list.Print();
+	list.Display();
+	cout<<"Reverse:";
+	list.Reverse();
+	list.Display();
 	
 }
