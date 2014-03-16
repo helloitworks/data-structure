@@ -32,7 +32,7 @@ void Stack::Push(int data)
 	//指针的方向从栈顶向下链接
 	Node *temp = new Node;
 	temp->data = data;
-	temp ->next = top;
+	temp->next = top;
 	top = temp;
 }
 
