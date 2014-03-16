@@ -120,6 +120,7 @@ void main()
 	cout<<"Delete(1):";
 	list.Delete(1);
 	list.Display();
+
 	/*
 	cout<<"Reverse:";
 	list.Reverse();
