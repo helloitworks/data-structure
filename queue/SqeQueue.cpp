@@ -9,20 +9,21 @@ struct Node
 
 class Queue
 {
-public:
-	Queue(int n);
-	void EnQueue(int data);
-	void DeQueue();
-	int Front();
-	bool IsEmpty();
-	bool IsFull();
-	int Size();
-private:
-	int *queue;
-	int front;
-	int rear;
-	int size;
-	int maxSize;
+	public:
+		Queue(int n);
+		void EnQueue(int data);
+		void DeQueue();
+		int Front();
+		bool IsEmpty();
+		bool IsFull();
+		int Size();
+		void Print();
+	private:
+		int *queue;
+		int front;
+		int rear;
+		int size;
+		int maxSize;
 
 };
 
@@ -71,6 +72,34 @@ int Queue::Size()
 	return size;
 }
 
+void Queue::Print()
+{
+	if (rear == front)
+	{
+		return;
+	}
+	else if (rear >front)
+	{
+		for (int i = front; i < rear; i++)
+		{
+			cout<<queue[i]<<ends;
+		}
+		cout<<endl;
+	}
+	else
+	{
+		for (int i=front; i < maxSize; i++)
+		{
+			cout<<queue[i]<<ends;
+		}
+		for (i=0; i < rear; i++)
+		{
+			cout<<queue[i]<<ends;
+		}
+		cout<<endl;
+	}
+}
+
 void main()
 {
 	int n = 10;
@@ -82,5 +111,7 @@ void main()
 	queue.DeQueue();
 	cout<<"Size:"<<queue.Size()<<endl;
 	cout<<"front:"<<queue.Front()<<endl;
+	cout<<"print:"<<endl;
+	queue.Print();
 
 }
