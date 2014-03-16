@@ -34,7 +34,7 @@ BinaryTree::BinaryTree(Node *&root)
 {
 	this->root = root;
 	Create(root);
-
+	
 }
 void BinaryTree::Create(Node *&root)
 {
@@ -82,7 +82,7 @@ void BinaryTree::PreOrder(Node *root)
 //--前序非递归遍历
 void BinaryTree::PreOrderUsingStack(Node *root)
 {
-
+	
     stack<Node *> stack;
     if (root != NULL)
     {
@@ -93,9 +93,9 @@ void BinaryTree::PreOrderUsingStack(Node *root)
     {
         if (root->lchild != NULL)
         {
-             printf("%c", root->lchild->data);
-             stack.push(root->lchild);
-             root = root->lchild;
+			printf("%c", root->lchild->data);
+			stack.push(root->lchild);
+			root = root->lchild;
         }
         else  if (root->rchild != NULL)
         {
@@ -110,7 +110,7 @@ void BinaryTree::PreOrderUsingStack(Node *root)
             Node *root = stack.top();
             
         }
-
+		
     }
 }
 
@@ -156,11 +156,11 @@ void BinaryTree::LevelOrder(Node *root)
 		if (p->rchild != NULL)
 		{
 			queue[rear++] = p->rchild;
-
+			
 		}
 	}
-
-
+	
+	
 }
 
 int BinaryTree::NodeCount(Node *root)
@@ -198,23 +198,23 @@ void main()
 {
 	Node *root=NULL;
 	BinaryTree binaryTree(root);
-
+	
     printf("\n前序遍历:");
 	binaryTree.PreOrder(root);
-
+	
     printf("\n前序非递归遍历:");
 	binaryTree.PreOrderUsingStack(root);
-
+	
     printf("\n中序遍历:");
 	binaryTree.InOrder(root);
-
+	
     printf("\n后序遍历:");
 	binaryTree.PostOrder(root);
-
+	
     printf("\n层遍历:");
 	binaryTree.LevelOrder(root);
-
+	
     printf("\n结点数:%d\n", binaryTree.NodeCount(root));
-
+	
     printf("\n层数:%d\n", binaryTree.BinaryTreeLevel(root));
 }
